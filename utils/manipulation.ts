@@ -11,7 +11,7 @@ export const capitalization = (str: string) => {
 }
 
 export const addQuestionMark = (str: string) => {
-  const lastChar = str.slice(-1);
+  const lastChar = str.slice(-1)
   
   if (lastChar === QUESTION_MARK) {
     return str

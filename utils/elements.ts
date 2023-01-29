@@ -3,5 +3,5 @@ export const scrollToElement = (element: Element | null) => {
     return
   }
 
-  element.scrollIntoView({behavior: "smooth"});
+  element.scrollIntoView({behavior: "smooth"})
 }
