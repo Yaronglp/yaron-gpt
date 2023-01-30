@@ -33,7 +33,7 @@ a {
   text-decoration: none;
 }
 
-#__next {
+body {
   height: 100%;
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
 }
