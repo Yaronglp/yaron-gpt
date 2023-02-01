@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Portal from '@/components/Portal';
 import { scrollToElement } from '@/utils/elements';
 import ImageHolder, { IImageHolder } from '../components/ImageHolder';
+import { FormWrapperStyle } from '@/styles/styles';
 
 export default function Image() {
   const [imageHolders, setImageHolders] = useState<IImageHolder[]>([])
@@ -99,13 +100,7 @@ const StyledImageWrapper = styled.main`
 `
 
 const StyledFormWrapper = styled.section`
-  height: var(--padding-space-header);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
+  ${FormWrapperStyle}
 `
 
 const StyledLoaderWrapper = styled.div`

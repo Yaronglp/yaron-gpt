@@ -5,6 +5,7 @@ import Ticket, { ITicket } from '@/components/Ticket';
 import styled from 'styled-components';
 import Portal from '@/components/Portal';
 import { scrollToElement } from '@/utils/elements';
+import { FormWrapperStyle } from '@/styles/styles';
 
 const TOGGLE_INPUT = {
   optionLeft: "Probability Temp",
@@ -101,13 +102,7 @@ const StyledTicketsWrapper = styled.main`
 `
 
 const StyledFormWrapper = styled.section`
-  height: var(--padding-space-header);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
+  ${FormWrapperStyle}
 `
 
 const StyledLoaderWrapper = styled.div`
