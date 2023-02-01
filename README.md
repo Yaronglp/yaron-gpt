@@ -1,8 +1,7 @@
-# Questions & Answers chat - based on OpenAI 
-This project was built to play a little bit with OpenAI.
+# OpenAI different API capabilities (WIP)
+This project was built to play a little bit with OpenAI capabilities.
 
-<img width="745" alt="image" src="https://user-images.githubusercontent.com/10623307/215349766-9ca3a786-0532-496d-85ac-4d8a9e1b6663.png">
-
+&nbsp;
 ## Getting Started
 1. Clone Project.
 2. Install packages by running `npm install`
@@ -17,3 +16,15 @@ OPENAI_API_KEY="<PASTE_YOUR_API_KEY>"
 7. Open browser [http://localhost:3000](http://localhost:3000)
 
 The project should be served on port 3000, in case that port is not available, Next.js will increment port number until available.
+
+&nbsp;
+## Text completion:
+![image](https://user-images.githubusercontent.com/10623307/216154202-f614c5af-b9ad-47eb-9ae1-b1c3df727006.png)
+
+Running on http://localhost:3000
+
+&nbsp;
+## Image generator:
+![image](https://user-images.githubusercontent.com/10623307/216153594-bf8c7a82-79b2-4b90-ad79-424000f5de27.png)
+
+Running on http://localhost:3000/image
