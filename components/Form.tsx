@@ -32,7 +32,7 @@ const Form = ({ onFormSubmit, disabled, submitLabel, toggleInput}: IForm) => {
       <StyledInputPrompt
         type="text"
         name="prompt"
-        placeholder="I would like to know..."
+        placeholder="I would like to generate..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
