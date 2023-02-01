@@ -8,7 +8,7 @@ export interface ITicket {
   isError?: boolean
 }
 
-const Ticket = ({question = 'this is tes', answer = 'this is a test', isError = false}: ITicket) => {
+const Ticket = ({question = '', answer = '', isError = false}: ITicket) => {
   const normalizedQuestion = isError ? question : addQuestionMark(capitalization(question.trim()))
 
   return (

@@ -6,9 +6,11 @@ import ToggleSwitcher from './toggleSwitcher'
 interface IForm {
   onFormSubmit: (e: any) => void
   disabled: boolean
+  submitLabel: string
+  toggleInput?: {optionLeft: string, optionRight: string}
 }
 
-const Form = ({ onFormSubmit, disabled}: IForm) => {
+const Form = ({ onFormSubmit, disabled, submitLabel, toggleInput}: IForm) => {
   const [input, setInput] = useState<string>('')
 
   const resetForm = () => {
@@ -34,8 +36,10 @@ const Form = ({ onFormSubmit, disabled}: IForm) => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <ToggleSwitcher optionLeft="Probability Temp" optionRight="Creativity Temp"/>
-      <StyledInputSubmit type="submit" value="Get Answer" disabled={isEmptyString(input)}/>
+      {toggleInput && <ToggleSwitcher 
+                        optionLeft={toggleInput.optionLeft} 
+                        optionRight={toggleInput.optionRight}/>}
+      <StyledInputSubmit type="submit" value={submitLabel} disabled={isEmptyString(input)}/>
     </StyledForm>
   )
 }

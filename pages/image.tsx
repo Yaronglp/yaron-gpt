@@ -1,38 +1,31 @@
 import Form from '@/components/Form'
 import { useState, useEffect } from 'react';
 import Loader from '@/components/Loader';
-import Ticket, { ITicket } from '@/components/Ticket';
 import styled from 'styled-components';
 import Portal from '@/components/Portal';
 import { scrollToElement } from '@/utils/elements';
+import ImageHolder, { IImageHolder } from '../components/ImageHolder';
 
-const TOGGLE_INPUT = {
-  optionLeft: "Probability Temp",
-  optionRight: "Creativity Temp"
-}
-
-export default function Home() {
-  const [tickets, setTickets] = useState<ITicket[]>([])
+export default function Image() {
+  const [imageHolders, setImageHolders] = useState<IImageHolder[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
   async function onSubmit(e: any) {
     setIsLoading(true)
     const formElements = e.target.elements
     const prompt = formElements['prompt'].value
-    const isCreativityTemp = e.target.elements['toggle'].checked
-    let ticketData = {
-      answer: '', 
-      question: '', 
+    let imageData: IImageHolder = {
+      query: '', 
       isError: false
     }
 
     try {
-      const response = await fetch("/api/completion", {
+      const response = await fetch("/api/image", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt, isCreativityTemp }),
+        body: JSON.stringify({ prompt }),
       });
       const data = await response.json();
 
@@ -40,20 +33,19 @@ export default function Home() {
         throw new Error(data.error.message)
       }
 
-      ticketData = {
-        answer: data.result, 
-        question: prompt, 
+      imageData = {
+        url: data.data, 
+        query: prompt, 
         isError: false
       }
     } catch (error: any) {
-      ticketData = {
-        answer: error.message, 
-        question: 'Error occurred during the request to openAI', 
+      imageData = {
+        query: `query: ${prompt}\nerror: ${error.message}`, 
         isError: true
       }
     } finally {
       setIsLoading(false)
-      setTickets([...tickets, ticketData])
+      setImageHolders([...imageHolders, imageData])
     }
   }
 
@@ -62,7 +54,7 @@ export default function Home() {
       return
     }
 
-    const elementForScroll = document.querySelector('#tickets > section:last-child')
+    const elementForScroll = document.querySelector('#image-holders > section:last-child')
     scrollToElement(elementForScroll)
   }, [isLoading])
 
@@ -71,9 +63,8 @@ export default function Home() {
       <StyledFormWrapper>
         <Form 
           onFormSubmit={onSubmit} 
-          disabled={isLoading} 
-          toggleInput={TOGGLE_INPUT} 
-          submitLabel={'Get Answer'}/>
+          disabled={isLoading}
+          submitLabel={"Generate image"}/>
       </StyledFormWrapper>
       {isLoading && 
         <Portal>
@@ -81,23 +72,30 @@ export default function Home() {
             <Loader/>
           </StyledLoaderWrapper>
         </Portal>}
-      {tickets.length > 0 && 
-        <StyledTicketsWrapper id="tickets">
-          { tickets.map((ticket: ITicket, index: number) => 
-            <Ticket 
+      {imageHolders.length > 0 && 
+        <StyledImageWrapper id="image-holders">
+          { imageHolders.map((imageHolder: IImageHolder, index: number) => 
+            <ImageHolder 
               key={index} 
-              question={ticket.question} 
-              answer={ticket.answer} 
-              isError={ticket.isError}/>
+              url={imageHolder.url} 
+              query={imageHolder.query} 
+              isError={imageHolder.isError}/>
           )}
-        </StyledTicketsWrapper>
+        </StyledImageWrapper>
       }
     </>
   )
 }
 
-const StyledTicketsWrapper = styled.main`
-  padding: var(--padding-space-header) 3rem 3rem 3rem;
+const StyledImageWrapper = styled.main`
+  display: flex;
+  justify-content: center;
+  padding-top: var(--padding-space-header);
+  flex-wrap: wrap;
+
+  h1 {
+    text-align: center;
+  }
 `
 
 const StyledFormWrapper = styled.section`
