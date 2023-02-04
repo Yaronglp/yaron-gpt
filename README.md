@@ -18,6 +18,10 @@ OPENAI_API_KEY="<PASTE_YOUR_API_KEY>"
 The project should be served on port 3000, in case that port is not available, Next.js will increment port number until available.
 
 &nbsp;
+## Home page:
+![image](https://user-images.githubusercontent.com/10623307/216786189-c70498b7-b575-4997-8ba8-87d92b307eda.png)
+
+&nbsp;
 ## Text completion:
 ![image](https://user-images.githubusercontent.com/10623307/216154202-f614c5af-b9ad-47eb-9ae1-b1c3df727006.png)
 
