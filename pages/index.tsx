@@ -1,112 +1,54 @@
-import Form from '@/components/Form'
-import { useState, useEffect } from 'react';
-import Loader from '@/components/Loader';
-import Ticket, { ITicket } from '@/components/Ticket';
 import styled from 'styled-components';
-import Portal from '@/components/Portal';
-import { scrollToElement } from '@/utils/elements';
-import { FormWrapperStyle } from '@/styles/styles';
+import Link from 'next/link';
 
-const TOGGLE_INPUT = {
-  optionLeft: "Probability Temp",
-  optionRight: "Creativity Temp"
+interface ILinks {
+  urlPath: string,
+  label: string
 }
 
-export default function Home() {
-  const [tickets, setTickets] = useState<ITicket[]>([])
-  const [isLoading, setIsLoading] = useState(false)
-
-  async function onSubmit(e: any) {
-    setIsLoading(true)
-    const formElements = e.target.elements
-    const prompt = formElements['prompt'].value
-    const isCreativityTemp = e.target.elements['toggle'].checked
-    let ticketData = {
-      answer: '', 
-      question: '', 
-      isError: false
-    }
-
-    try {
-      const response = await fetch("/api/completion", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ prompt, isCreativityTemp }),
-      });
-      const data = await response.json();
-
-      if (response.status === 500) {
-        throw new Error(data.error.message)
-      }
-
-      ticketData = {
-        answer: data.result, 
-        question: prompt, 
-        isError: false
-      }
-    } catch (error: any) {
-      ticketData = {
-        answer: error.message, 
-        question: 'Error occurred during the request to openAI', 
-        isError: true
-      }
-    } finally {
-      setIsLoading(false)
-      setTickets([...tickets, ticketData])
-    }
+const LINKS: ILinks[] = [
+  {
+    urlPath: '/completion',
+    label: 'Ask AI'
+  },
+  {
+    urlPath: '/image',
+    label: 'Generate Image'
   }
+]
 
-  useEffect(() => {
-    if (isLoading) {
-      return
-    }
-
-    const elementForScroll = document.querySelector('#tickets > section:last-child')
-    scrollToElement(elementForScroll)
-  }, [isLoading])
-
+export default function Home() {
   return (
-    <>
-      <StyledFormWrapper>
-        <Form 
-          onFormSubmit={onSubmit} 
-          disabled={isLoading} 
-          toggleInput={TOGGLE_INPUT} 
-          submitLabel={'Get Answer'}/>
-      </StyledFormWrapper>
-      {isLoading && 
-        <Portal>
-          <StyledLoaderWrapper>
-            <Loader/>
-          </StyledLoaderWrapper>
-        </Portal>}
-      {tickets.length > 0 && 
-        <StyledTicketsWrapper id="tickets">
-          { tickets.map((ticket: ITicket, index: number) => 
-            <Ticket 
-              key={index} 
-              question={ticket.question} 
-              answer={ticket.answer} 
-              isError={ticket.isError}/>
-          )}
-        </StyledTicketsWrapper>
-      }
-    </>
+    <StyledWrapper>
+      {LINKS.map((link) => 
+        <section key={link.label}>
+          <Link href={link.urlPath}>{link.label}</Link>
+        </section>
+      )}
+    </StyledWrapper>
   )
 }
 
-const StyledTicketsWrapper = styled.main`
-  padding: var(--padding-space-header) 3rem 3rem 3rem;
-`
+const StyledWrapper = styled.main`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 6rem;
 
-const StyledFormWrapper = styled.section`
-  ${FormWrapperStyle}
-`
-
-const StyledLoaderWrapper = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
+  a {
+    background: var(--color-white);
+    box-shadow: var(--shadow-default);
+    border-radius: var(--default-size);
+    padding: var(--padding-space-big);
+    width: 20rem;
+    font-size: 2rem;
+    text-align: center;
+    display: inline-block;
+    
+    &:hover {
+      font-weight: 700;
+    }
+  }
 `
