@@ -12,8 +12,12 @@ const LINKS: ILinks[] = [
     label: 'Ask AI'
   },
   {
-    urlPath: '/image',
-    label: 'Generate Image'
+    urlPath: '/image-creation',
+    label: 'Generate Image from Text'
+  },
+  {
+    urlPath: '/image-variation',
+    label: 'Generate Variation from Image'
   }
 ]
 
@@ -43,9 +47,12 @@ const StyledWrapper = styled.main`
     border-radius: var(--default-size);
     padding: var(--padding-space-big);
     width: 20rem;
+    height: 12rem;
     font-size: 2rem;
     text-align: center;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
     &:hover {
       font-weight: 700;

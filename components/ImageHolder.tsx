@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 export interface IImageHolder {
-  query: string
+  query?: string
   url?: string
   isError?: boolean
 }
@@ -10,7 +10,7 @@ export interface IImageHolder {
 const ImageHolder = ({url = '', query = '', isError = false}: IImageHolder) => {
   return (
     <StyledSection isError={isError}>
-      <h1>{query}</h1>
+      {query && <h1>{query}</h1>}
       {!isError && <StyledImage src={url} alt={query}/>}
     </StyledSection>
   )

@@ -8,9 +8,10 @@ interface IForm {
   disabled: boolean
   submitLabel: string
   toggleInput?: {optionLeft: string, optionRight: string}
+  instructions?: string
 }
 
-const Form = ({ onFormSubmit, disabled, submitLabel, toggleInput}: IForm) => {
+const Form = ({ onFormSubmit, disabled, submitLabel, toggleInput, instructions}: IForm) => {
   const [input, setInput] = useState<string>('')
 
   const resetForm = () => {
@@ -39,6 +40,7 @@ const Form = ({ onFormSubmit, disabled, submitLabel, toggleInput}: IForm) => {
       {toggleInput && <ToggleSwitcher 
                         optionLeft={toggleInput.optionLeft} 
                         optionRight={toggleInput.optionRight}/>}
+      {instructions && <label>{instructions}</label>}                        
       <StyledInputSubmit type="submit" value={submitLabel} disabled={isEmptyString(input)}/>
     </StyledForm>
   )

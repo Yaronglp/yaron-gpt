@@ -7,7 +7,7 @@ import { scrollToElement } from '@/utils/elements';
 import ImageHolder, { IImageHolder } from '../components/ImageHolder';
 import { FormWrapperStyle } from '@/styles/styles';
 
-export default function Image() {
+export default function ImageCreation() {
   const [imageHolders, setImageHolders] = useState<IImageHolder[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -21,7 +21,7 @@ export default function Image() {
     }
 
     try {
-      const response = await fetch("/api/image", {
+      const response = await fetch("/api/imageCreation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
