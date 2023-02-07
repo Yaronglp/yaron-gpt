@@ -8,7 +8,7 @@ export interface ITicket {
   isError?: boolean
 }
 
-const Ticket = ({question = '', answer = '', isError = false}: ITicket) => {
+const Ticket = ({ question = '', answer = '', isError = false }: ITicket) => {
   const normalizedQuestion = isError ? question : addQuestionMark(capitalization(question.trim()))
 
   return (
@@ -25,7 +25,7 @@ const StyledDiv = styled.div`
   flex: 1;
 `
 
-const StyledSection = styled.section<{isError: boolean}>`
+const StyledSection = styled.section<{ isError: boolean }>`
   background: var(--color-white);
   display: flex;
   gap: 2rem;
@@ -36,9 +36,11 @@ const StyledSection = styled.section<{isError: boolean}>`
   border-radius: var(--default-size);
   line-height: 1.2rem;
   margin: var(--default-size);
-  ${({isError}) => isError && css`
-    color: var(--color-red);
-  `}
+  ${({ isError }) =>
+    isError &&
+    css`
+      color: var(--color-red);
+    `}
 
   &:nth-child(n+2):last-child {
     font-size: larger;

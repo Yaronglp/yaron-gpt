@@ -1,34 +1,34 @@
-import styled from 'styled-components';
-import Link from 'next/link';
+import styled from 'styled-components'
+import Link from 'next/link'
 
 interface ILinks {
-  urlPath: string,
+  urlPath: string
   label: string
 }
 
 const LINKS: ILinks[] = [
   {
     urlPath: '/completion',
-    label: 'Ask AI'
+    label: 'Ask AI',
   },
   {
     urlPath: '/image-creation',
-    label: 'Generate Image from Text'
+    label: 'Generate Image from Text',
   },
   {
     urlPath: '/image-variation',
-    label: 'Generate Variation from Image'
-  }
+    label: 'Generate Variation from Image',
+  },
 ]
 
 export default function Home() {
   return (
     <StyledWrapper>
-      {LINKS.map((link) => 
+      {LINKS.map((link) => (
         <section key={link.label}>
           <Link href={link.urlPath}>{link.label}</Link>
         </section>
-      )}
+      ))}
     </StyledWrapper>
   )
 }
@@ -53,7 +53,7 @@ const StyledWrapper = styled.main`
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     &:hover {
       font-weight: 700;
     }

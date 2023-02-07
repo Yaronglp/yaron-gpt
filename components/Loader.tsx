@@ -2,9 +2,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 const Loader = () => {
-  return (
-    <StyledLoader></StyledLoader>
-  )
+  return <StyledLoader></StyledLoader>
 }
 
 export default Loader
@@ -30,7 +28,7 @@ const StyledLoader = styled.div`
   animation: ${Spin} 3s linear infinite;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 5px;
     left: 5px;
@@ -44,7 +42,7 @@ const StyledLoader = styled.div`
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 15px;
     left: 15px;
@@ -57,4 +55,3 @@ const StyledLoader = styled.div`
     animation: ${Spin} 5s linear infinite;
   }
 `
-

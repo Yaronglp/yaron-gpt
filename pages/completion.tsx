@@ -1,15 +1,15 @@
 import Form from '@/components/Form'
-import { useState, useEffect } from 'react';
-import Loader from '@/components/Loader';
-import Ticket, { ITicket } from '@/components/Ticket';
-import styled from 'styled-components';
-import Portal from '@/components/Portal';
-import { scrollToElement } from '@/utils/elements';
-import { FormWrapperStyle } from '@/styles/styles';
+import { useState, useEffect } from 'react'
+import Loader from '@/components/Loader'
+import Ticket, { ITicket } from '@/components/Ticket'
+import styled from 'styled-components'
+import Portal from '@/components/Portal'
+import { scrollToElement } from '@/utils/elements'
+import { FormWrapperStyle } from '@/styles/styles'
 
 const TOGGLE_INPUT = {
-  optionLeft: "Probability Temp",
-  optionRight: "Creativity Temp"
+  optionLeft: 'Probability Temp',
+  optionRight: 'Creativity Temp',
 }
 
 export default function Completion() {
@@ -22,35 +22,35 @@ export default function Completion() {
     const prompt = formElements['prompt'].value
     const isCreativityTemp = e.target.elements['toggle'].checked
     let ticketData = {
-      answer: '', 
-      question: '', 
-      isError: false
+      answer: '',
+      question: '',
+      isError: false,
     }
 
     try {
-      const response = await fetch("/api/completion", {
-        method: "POST",
+      const response = await fetch('/api/completion', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ prompt, isCreativityTemp }),
-      });
-      const data = await response.json();
+      })
+      const data = await response.json()
 
       if (response.status === 500) {
         throw new Error(data.error.message)
       }
 
       ticketData = {
-        answer: data.result, 
-        question: prompt, 
-        isError: false
+        answer: data.result,
+        question: prompt,
+        isError: false,
       }
     } catch (error: any) {
       ticketData = {
-        answer: error.message, 
-        question: 'Error occurred during the request to openAI', 
-        isError: true
+        answer: error.message,
+        question: 'Error occurred during the request to openAI',
+        isError: true,
       }
     } finally {
       setIsLoading(false)
@@ -70,29 +70,22 @@ export default function Completion() {
   return (
     <>
       <StyledFormWrapper>
-        <Form 
-          onFormSubmit={onSubmit} 
-          disabled={isLoading} 
-          toggleInput={TOGGLE_INPUT} 
-          submitLabel={'Get Answer'}/>
+        <Form onFormSubmit={onSubmit} disabled={isLoading} toggleInput={TOGGLE_INPUT} submitLabel={'Get Answer'} />
       </StyledFormWrapper>
-      {isLoading && 
+      {isLoading && (
         <Portal>
           <StyledLoaderWrapper>
-            <Loader/>
+            <Loader />
           </StyledLoaderWrapper>
-        </Portal>}
-      {tickets.length > 0 && 
+        </Portal>
+      )}
+      {tickets.length > 0 && (
         <StyledTicketsWrapper id="tickets">
-          { tickets.map((ticket: ITicket, index: number) => 
-            <Ticket 
-              key={index} 
-              question={ticket.question} 
-              answer={ticket.answer} 
-              isError={ticket.isError}/>
-          )}
+          {tickets.map((ticket: ITicket, index: number) => (
+            <Ticket key={index} question={ticket.question} answer={ticket.answer} isError={ticket.isError} />
+          ))}
         </StyledTicketsWrapper>
-      }
+      )}
     </>
   )
 }

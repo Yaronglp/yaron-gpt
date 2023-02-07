@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next"
-import { Configuration, OpenAIApi } from "openai"
+import { NextApiRequest, NextApiResponse } from 'next'
+import { Configuration, OpenAIApi } from 'openai'
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -13,10 +13,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   const temperature = req.body.isCreativityTemp ? 0.7 : 0.3
   try {
     const completion = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: 'text-davinci-003',
       prompt: req.body.prompt,
       temperature,
-      max_tokens: MAX_TOKENS_QUERY
+      max_tokens: MAX_TOKENS_QUERY,
     })
 
     res.status(200).json({ result: completion.data.choices[0].text })
@@ -26,10 +26,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       res.status(500).json(errorRes.data)
     }
 
-    res.status(500).json({ 
+    res.status(500).json({
       error: {
-        message: GENERAL_ERROR
-      }
+        message: GENERAL_ERROR,
+      },
     })
   }
 }

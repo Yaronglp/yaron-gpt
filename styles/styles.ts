@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css } from 'styled-components'
 
 export const FormWrapperStyle = css`
   height: var(--padding-space-header);

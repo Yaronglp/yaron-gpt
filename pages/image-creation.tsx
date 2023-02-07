@@ -1,11 +1,11 @@
 import Form from '@/components/Form'
-import { useState, useEffect } from 'react';
-import Loader from '@/components/Loader';
-import styled from 'styled-components';
-import Portal from '@/components/Portal';
-import { scrollToElement } from '@/utils/elements';
-import ImageHolder, { IImageHolder } from '../components/ImageHolder';
-import { FormWrapperStyle } from '@/styles/styles';
+import { useState, useEffect } from 'react'
+import Loader from '@/components/Loader'
+import styled from 'styled-components'
+import Portal from '@/components/Portal'
+import { scrollToElement } from '@/utils/elements'
+import ImageHolder, { IImageHolder } from '../components/ImageHolder'
+import { FormWrapperStyle } from '@/styles/styles'
 
 export default function ImageCreation() {
   const [imageHolders, setImageHolders] = useState<IImageHolder[]>([])
@@ -16,33 +16,33 @@ export default function ImageCreation() {
     const formElements = e.target.elements
     const prompt = formElements['prompt'].value
     let imageData: IImageHolder = {
-      query: '', 
-      isError: false
+      query: '',
+      isError: false,
     }
 
     try {
-      const response = await fetch("/api/imageCreation", {
-        method: "POST",
+      const response = await fetch('/api/imageCreation', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ prompt }),
-      });
-      const data = await response.json();
+      })
+      const data = await response.json()
 
       if (response.status === 500) {
         throw new Error(data.error.message)
       }
 
       imageData = {
-        url: data.data, 
-        query: prompt, 
-        isError: false
+        url: data.data,
+        query: prompt,
+        isError: false,
       }
     } catch (error: any) {
       imageData = {
-        query: `query: ${prompt}\nerror: ${error.message}`, 
-        isError: true
+        query: `query: ${prompt}\nerror: ${error.message}`,
+        isError: true,
       }
     } finally {
       setIsLoading(false)
@@ -62,28 +62,22 @@ export default function ImageCreation() {
   return (
     <>
       <StyledFormWrapper>
-        <Form 
-          onFormSubmit={onSubmit} 
-          disabled={isLoading}
-          submitLabel={"Generate image"}/>
+        <Form onFormSubmit={onSubmit} disabled={isLoading} submitLabel={'Generate image'} />
       </StyledFormWrapper>
-      {isLoading && 
+      {isLoading && (
         <Portal>
           <StyledLoaderWrapper>
-            <Loader/>
+            <Loader />
           </StyledLoaderWrapper>
-        </Portal>}
-      {imageHolders.length > 0 && 
+        </Portal>
+      )}
+      {imageHolders.length > 0 && (
         <StyledImageWrapper id="image-holders">
-          { imageHolders.map((imageHolder: IImageHolder, index: number) => 
-            <ImageHolder 
-              key={index} 
-              url={imageHolder.url} 
-              query={imageHolder.query} 
-              isError={imageHolder.isError}/>
-          )}
+          {imageHolders.map((imageHolder: IImageHolder, index: number) => (
+            <ImageHolder key={index} url={imageHolder.url} query={imageHolder.query} isError={imageHolder.isError} />
+          ))}
         </StyledImageWrapper>
-      }
+      )}
     </>
   )
 }

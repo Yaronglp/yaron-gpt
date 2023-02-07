@@ -1,11 +1,11 @@
 import Form from '@/components/Form'
-import { useState, useEffect } from 'react';
-import Loader from '@/components/Loader';
-import styled from 'styled-components';
-import Portal from '@/components/Portal';
-import { scrollToElement } from '@/utils/elements';
-import ImageHolder, { IImageHolder } from '../components/ImageHolder';
-import { FormWrapperStyle } from '@/styles/styles';
+import { useState, useEffect } from 'react'
+import Loader from '@/components/Loader'
+import styled from 'styled-components'
+import Portal from '@/components/Portal'
+import { scrollToElement } from '@/utils/elements'
+import ImageHolder, { IImageHolder } from '../components/ImageHolder'
+import { FormWrapperStyle } from '@/styles/styles'
 
 export default function ImageVariation() {
   const [imageHolders, setImageHolders] = useState<IImageHolder[]>([])
@@ -18,31 +18,36 @@ export default function ImageVariation() {
     let imagesData: IImageHolder[] = []
 
     try {
-      const response = await fetch("/api/imageVariation", {
-        method: "POST",
+      const response = await fetch('/api/imageVariation', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ prompt }),
-      });
-      const data = await response.json();
+      })
+      const data = await response.json()
 
       if (response.status === 500) {
         throw new Error(data.error.message)
       }
 
-      imagesData = [{
-        url: data.data[0],
-        isError: false
-      }, {
-        url: data.data[1],
-        isError: false
-      }]
+      imagesData = [
+        {
+          url: data.data[0],
+          isError: false,
+        },
+        {
+          url: data.data[1],
+          isError: false,
+        },
+      ]
     } catch (error: any) {
-      imagesData = [{
-        query: `query: ${prompt}\nerror: ${error.message}`, 
-        isError: true
-      }]
+      imagesData = [
+        {
+          query: `query: ${prompt}\nerror: ${error.message}`,
+          isError: true,
+        },
+      ]
     } finally {
       setIsLoading(false)
       setImageHolders([...imageHolders, ...imagesData])
@@ -61,29 +66,32 @@ export default function ImageVariation() {
   return (
     <>
       <StyledFormWrapper>
-        <Form 
-          onFormSubmit={onSubmit} 
+        <Form
+          onFormSubmit={onSubmit}
           disabled={isLoading}
-          submitLabel={"Make image variation"}
-          instructions={"Please provide an image URL with square dimensions and image size lower than 4MB"}/>
+          submitLabel={'Make image variation'}
+          instructions={'Please provide an image URL with square dimensions and image size lower than 4MB'}
+        />
       </StyledFormWrapper>
-      {isLoading && 
+      {isLoading && (
         <Portal>
           <StyledLoaderWrapper>
-            <Loader/>
+            <Loader />
           </StyledLoaderWrapper>
-        </Portal>}
-      {imageHolders.length > 0 && 
+        </Portal>
+      )}
+      {imageHolders.length > 0 && (
         <StyledImageWrapper id="image-holders">
-          { imageHolders.map((imageHolder: IImageHolder, index: number) => 
-            <ImageHolder 
-              key={index} 
-              url={imageHolder.url} 
-              query={imageHolder.isError ? imageHolder.query : undefined} 
-              isError={imageHolder.isError}/>
-          )}
+          {imageHolders.map((imageHolder: IImageHolder, index: number) => (
+            <ImageHolder
+              key={index}
+              url={imageHolder.url}
+              query={imageHolder.isError ? imageHolder.query : undefined}
+              isError={imageHolder.isError}
+            />
+          ))}
         </StyledImageWrapper>
-      }
+      )}
     </>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export interface IImageHolder {
   query?: string
@@ -7,11 +7,7 @@ export interface IImageHolder {
   isError?: boolean
 }
 
-const ImageHolder = ({
-  url = '',
-  query = '',
-  isError = false,
-}: IImageHolder) => {
+const ImageHolder = ({ url = '', query = '', isError = false }: IImageHolder) => {
   return (
     <StyledSection isError={isError}>
       {query && <h1>{query}</h1>}

@@ -7,11 +7,11 @@ interface IForm {
   onFormSubmit: (e: any) => void
   disabled: boolean
   submitLabel: string
-  toggleInput?: {optionLeft: string, optionRight: string}
+  toggleInput?: { optionLeft: string; optionRight: string }
   instructions?: string
 }
 
-const Form = ({ onFormSubmit, disabled, submitLabel, toggleInput, instructions}: IForm) => {
+const Form = ({ onFormSubmit, disabled, submitLabel, toggleInput, instructions }: IForm) => {
   const [input, setInput] = useState<string>('')
 
   const resetForm = () => {
@@ -37,18 +37,16 @@ const Form = ({ onFormSubmit, disabled, submitLabel, toggleInput, instructions}:
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      {toggleInput && <ToggleSwitcher 
-                        optionLeft={toggleInput.optionLeft} 
-                        optionRight={toggleInput.optionRight}/>}
-      {instructions && <label>{instructions}</label>}                        
-      <StyledInputSubmit type="submit" value={submitLabel} disabled={isEmptyString(input)}/>
+      {toggleInput && <ToggleSwitcher optionLeft={toggleInput.optionLeft} optionRight={toggleInput.optionRight} />}
+      {instructions && <label>{instructions}</label>}
+      <StyledInputSubmit type="submit" value={submitLabel} disabled={isEmptyString(input)} />
     </StyledForm>
   )
 }
 
 export default Form
 
-const StyledForm = styled.form<{disabled: boolean}>`
+const StyledForm = styled.form<{ disabled: boolean }>`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -58,10 +56,12 @@ const StyledForm = styled.form<{disabled: boolean}>`
   padding: var(--padding-space-big);
   box-shadow: 0 0 0.5rem;
   border-radius: 3rem;
-  ${({disabled}) => disabled && css`
-    opacity: 0.3;
-    pointer-events: none;
-  `}
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      opacity: 0.3;
+      pointer-events: none;
+    `}
 `
 
 const StyledInput = styled.input`
@@ -72,7 +72,7 @@ const StyledInput = styled.input`
   box-shadow: var(--shadow-default);
 
   &:focus-visible {
-    outline: none
+    outline: none;
   }
 `
 
@@ -81,8 +81,9 @@ const StyledInputPrompt = styled(StyledInput)`
 `
 
 const StyledInputSubmit = styled(StyledInput)`
-  ${({ disabled }) => !disabled && css`
-    cursor: pointer;
-  `}
+  ${({ disabled }) =>
+    !disabled &&
+    css`
+      cursor: pointer;
+    `}
 `
-

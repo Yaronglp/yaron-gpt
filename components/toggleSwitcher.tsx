@@ -6,12 +6,12 @@ interface IToggleSwitcher {
   optionRight: string
 }
 
-const ToggleSwitcher = ({optionLeft = "opt1", optionRight = "opt2"}: IToggleSwitcher) => {
+const ToggleSwitcher = ({ optionLeft = 'opt1', optionRight = 'opt2' }: IToggleSwitcher) => {
   return (
     <StyledToggleWrapper>
       <span>{optionLeft}</span>
       <StyledInputWrapper>
-        <StyledInput type="checkbox" name="toggle"/>
+        <StyledInput type="checkbox" name="toggle" />
       </StyledInputWrapper>
       <span>{optionRight}</span>
     </StyledToggleWrapper>
@@ -36,7 +36,7 @@ const StyledInput = styled.input`
   height: 2rem;
   border-radius: var(--default-size);
   background-color: var(--color-purple);
-  transition: background .5s;
+  transition: background 0.5s;
   outline: none;
   cursor: pointer;
 
@@ -50,9 +50,8 @@ const StyledInput = styled.input`
     height: 1.25rem;
     width: 1.25rem;
     background-color: var(--color-white);
-    transition: left .5s;
+    transition: left 0.5s;
   }
-
 
   &:checked {
     background-color: var(--color-orange);
