@@ -19,16 +19,22 @@ The project should be served on port 3000, in case that port is not available, N
 
 &nbsp;
 ## Home page:
-![image](https://user-images.githubusercontent.com/10623307/216786189-c70498b7-b575-4997-8ba8-87d92b307eda.png)
+![image](https://user-images.githubusercontent.com/10623307/217327332-9b8afe7b-1286-4d61-b40a-e2da6fbe8435.png)
 
 &nbsp;
-## Text completion:
+## Ask AI:
 ![image](https://user-images.githubusercontent.com/10623307/216154202-f614c5af-b9ad-47eb-9ae1-b1c3df727006.png)
 
-Running on http://localhost:3000
+Running on http://localhost:3000/completion
 
 &nbsp;
-## Image generator:
+## Generate Image from Text:
 ![image](https://user-images.githubusercontent.com/10623307/216153594-bf8c7a82-79b2-4b90-ad79-424000f5de27.png)
 
-Running on http://localhost:3000/image
+Running on http://localhost:3000/image-creation
+
+&nbsp;
+## Generate Variations from Image:
+![image](https://user-images.githubusercontent.com/10623307/217328388-fc4ad513-59a0-4cd1-b597-7616849160ac.png)
+
+Running on http://localhost:3000/image-variation

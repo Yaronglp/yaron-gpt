@@ -17,7 +17,7 @@ const LINKS: ILinks[] = [
   },
   {
     urlPath: '/image-variation',
-    label: 'Generate Variation from Image',
+    label: 'Generate Variations from Image',
   },
 ]
 

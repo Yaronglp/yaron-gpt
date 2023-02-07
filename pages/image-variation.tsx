@@ -69,7 +69,7 @@ export default function ImageVariation() {
         <Form
           onFormSubmit={onSubmit}
           disabled={isLoading}
-          submitLabel={'Make image variation'}
+          submitLabel={'Make image variations'}
           instructions={'Please provide an image URL with square dimensions and image size lower than 4MB'}
         />
       </StyledFormWrapper>
