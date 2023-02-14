@@ -13,7 +13,7 @@ const Ticket = ({ question = '', answer = '', isError = false }: ITicket) => {
 
   return (
     <StyledSection isError={isError}>
-      <StyledDiv>{normalizedQuestion}</StyledDiv>
+      <StyledParagraph>{normalizedQuestion}</StyledParagraph>
       <StyledAnswer>{answer.trim()}</StyledAnswer>
     </StyledSection>
   )
@@ -21,7 +21,7 @@ const Ticket = ({ question = '', answer = '', isError = false }: ITicket) => {
 
 export default Ticket
 
-const StyledDiv = styled.div`
+const StyledParagraph = styled.p`
   flex: 1;
 `
 
@@ -48,13 +48,13 @@ const StyledSection = styled.section<{ isError: boolean }>`
 
     &::before {
       content: url('./point-right.svg');
-      position: relative;
+      position: absolute;
       left: -3rem;
     }
   }
 `
 
-const StyledAnswer = styled(StyledDiv)`
+const StyledAnswer = styled(StyledParagraph)`
   white-space: pre-line;
   flex: 4;
 `
