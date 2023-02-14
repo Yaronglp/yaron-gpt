@@ -23,8 +23,8 @@ const StyledLoader = styled.div`
   margin: -75px 0 0 -75px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: var(--color-blue);
-  border-bottom-color: var(--color-blue);
+  border-top-color: var(--color-red);
+  border-bottom-color: var(--color-red);
   animation: ${Spin} 3s linear infinite;
 
   &::before {
@@ -36,8 +36,8 @@ const StyledLoader = styled.div`
     bottom: 5px;
     border-radius: 50%;
     border: 3px solid transparent;
-    border-top-color: var(--color-red);
-    border-bottom-color: var(--color-red);
+    border-top-color: var(--color-yellow);
+    border-bottom-color: var(--color-yellow);
     animation: ${Spin} 4s linear infinite;
   }
 
@@ -50,8 +50,8 @@ const StyledLoader = styled.div`
     bottom: 15px;
     border-radius: 50%;
     border: 3px solid transparent;
-    border-top-color: var(--color-yellow);
-    border-bottom-color: var(--color-yellow);
+    border-top-color: var(--color-orange);
+    border-bottom-color: var(--color-orange);
     animation: ${Spin} 5s linear infinite;
   }
 `

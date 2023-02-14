@@ -8,10 +8,8 @@
   --color-purple: #B39CD0;
   --color-orange: #FF8066;
   --color-red: #ff0000;
-  --color-blue: #3498db;
   --color-yellow: #f9c922;
   --shadow-default: 1px 1px 5px 1px;
-  --primary-background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)
 }
 
 * {
@@ -30,7 +28,7 @@ body {
 }
 
 body {
-  background-image: var(--primary-background);
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
 }
 
 a {
