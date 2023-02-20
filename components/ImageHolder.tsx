@@ -39,6 +39,11 @@ const StyledSection = styled.section<{ isError: boolean }>`
       }
     `}
   max-width: 550px;
+
+  h1 {
+    max-width: 100%;
+    word-wrap: break-word;
+  }
 `
 
 const StyledImage = styled.img`
