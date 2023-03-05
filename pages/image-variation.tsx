@@ -6,6 +6,7 @@ import Portal from '@/components/Portal'
 import { scrollToElement } from '@/utils/elements'
 import ImageHolder, { IImageHolder } from '../components/ImageHolder'
 import { FormWrapperStyle } from '@/styles/styles'
+import BackButton from '@/components/BackButton'
 
 export default function ImageVariation() {
   const [imageHolders, setImageHolders] = useState<IImageHolder[]>([])
@@ -65,6 +66,7 @@ export default function ImageVariation() {
 
   return (
     <>
+      <BackButton />
       <StyledFormWrapper>
         <Form
           onFormSubmit={onSubmit}
