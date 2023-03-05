@@ -51,9 +51,9 @@ const StyledForm = styled.form<{ disabled: boolean }>`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  gap: var(--default-size);
+  gap: var(--size-regular);
   background: var(--color-white);
-  padding: var(--padding-space-big);
+  padding: var(--size-big);
   box-shadow: 0 0 0.5rem;
   border-radius: 3rem;
   ${({ disabled }) =>
@@ -65,10 +65,10 @@ const StyledForm = styled.form<{ disabled: boolean }>`
 `
 
 const StyledInput = styled.input`
-  padding: var(--padding-space-small);
-  border-radius: var(--default-size);
+  padding: var(--size-small);
+  border-radius: var(--size-regular);
   border-color: transparent;
-  font-size: var(--default-size);
+  font-size: var(--size-regular);
   box-shadow: var(--shadow-default);
 
   &:focus-visible {

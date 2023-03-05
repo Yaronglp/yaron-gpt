@@ -34,7 +34,7 @@ const StyledInput = styled.input`
   position: relative;
   width: 3.5rem;
   height: 2rem;
-  border-radius: var(--default-size);
+  border-radius: var(--size-regular);
   background-color: var(--color-purple);
   transition: background 0.5s;
   outline: none;

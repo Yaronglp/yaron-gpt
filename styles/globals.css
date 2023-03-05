@@ -1,8 +1,7 @@
 :root {
-  --default-size: 1rem;
-  --padding-space-small: 0.5rem;
-  --padding-space-regular: 1rem;
-  --padding-space-big: 2rem;
+  --size-small: 0.5rem;
+  --size-regular: 1rem;
+  --size-big: 2rem;
   --padding-space-header: 15rem;
   --color-white: #fff;
   --color-purple: #B39CD0;

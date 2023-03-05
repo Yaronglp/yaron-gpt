@@ -44,8 +44,8 @@ const StyledWrapper = styled.main`
   a {
     background: var(--color-white);
     box-shadow: var(--shadow-default);
-    border-radius: var(--default-size);
-    padding: var(--padding-space-big);
+    border-radius: var(--size-regular);
+    padding: var(--size-big);
     width: 20rem;
     height: 12rem;
     font-size: 2rem;

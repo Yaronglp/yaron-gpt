@@ -25,10 +25,10 @@ const StyledSection = styled.section<{ isError: boolean }>`
   gap: 2rem;
   flex-direction: column;
   align-items: center;
-  padding: var(--default-size);
+  padding: var(--size-regular);
   box-shadow: var(--shadow-default);
-  border-radius: var(--default-size);
-  margin: var(--default-size);
+  border-radius: var(--size-regular);
+  margin: var(--size-regular);
   ${({ isError }) =>
     isError &&
     css`
