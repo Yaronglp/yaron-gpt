@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Portal from '@/components/Portal'
 import { scrollToElement } from '@/utils/elements'
 import { FormWrapperStyle } from '@/styles/styles'
+import BackButton from '@/components/BackButton'
 
 const TOGGLE_INPUT = {
   optionLeft: 'Probability Temp',
@@ -69,6 +70,7 @@ export default function Completion() {
 
   return (
     <>
+      <BackButton />
       <StyledFormWrapper>
         <Form onFormSubmit={onSubmit} disabled={isLoading} toggleInput={TOGGLE_INPUT} submitLabel={'Get Answer'} />
       </StyledFormWrapper>

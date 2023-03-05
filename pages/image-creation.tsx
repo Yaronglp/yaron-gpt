@@ -6,6 +6,7 @@ import Portal from '@/components/Portal'
 import { scrollToElement } from '@/utils/elements'
 import ImageHolder, { IImageHolder } from '../components/ImageHolder'
 import { FormWrapperStyle } from '@/styles/styles'
+import BackButton from '@/components/BackButton'
 
 export default function ImageCreation() {
   const [imageHolders, setImageHolders] = useState<IImageHolder[]>([])
@@ -61,6 +62,7 @@ export default function ImageCreation() {
 
   return (
     <>
+      <BackButton />
       <StyledFormWrapper>
         <Form onFormSubmit={onSubmit} disabled={isLoading} submitLabel={'Generate image'} />
       </StyledFormWrapper>
