@@ -5,8 +5,8 @@ import Ticket, { ITicket } from '@/components/Ticket'
 import styled from 'styled-components'
 import Portal from '@/components/Portal'
 import { scrollToElement } from '@/utils/elements'
-import { FormWrapperStyle } from '@/styles/styles'
 import BackButton from '@/components/BackButton'
+import { FormWrapperStyle, LoaderWrapperStyle } from '@/styles/common'
 
 const TOGGLE_INPUT = {
   optionLeft: 'Probability Temp',
@@ -101,7 +101,5 @@ const StyledFormWrapper = styled.section`
 `
 
 const StyledLoaderWrapper = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
+  ${LoaderWrapperStyle}
 `

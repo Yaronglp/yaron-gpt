@@ -9,3 +9,9 @@ export const FormWrapperStyle = css`
   left: 50%;
   transform: translateX(-50%);
 `
+
+export const LoaderWrapperStyle = css`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+`
