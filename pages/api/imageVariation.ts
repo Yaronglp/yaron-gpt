@@ -21,7 +21,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   await saveImageLocally(prompt)
 
   try {
-    // TODO: make the image stream to be called sync - will solve the issue for the first image loading
     const response = await openai.createImageVariation(fs.createReadStream(LOCAL_IMAGE_PATH), 2, '512x512')
     const imageURLs = [response.data.data[0].url, response.data.data[1].url]
 
@@ -53,17 +52,11 @@ async function saveImageLocally(imageURL: string): Promise<void> {
     })
 
     const buffer = Buffer.from(axiosRes.data, 'binary')
+    const image = await Jimp.read(buffer)
 
-    Jimp.read(buffer, (err, image) => {
-      if (err) {
-        throw new Error('Error Running Image Reader:', err)
-      } else {
-        image.write(IMAGE_FILENAME, () => {
-          console.log('Local Image Saved Successfully!')
-        })
-      }
-    })
+    await image.writeAsync(IMAGE_FILENAME)
+    console.log('Image was saved successfully')
   } catch (error: any) {
-    console.error('Error Saving Image Locally:', error.message)
+    console.error('Error saving image locally:', error.message)
   }
 }
