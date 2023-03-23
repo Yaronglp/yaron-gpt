@@ -7,7 +7,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { prompt } = req.body
 
   try {
-    const response = await getOpenAIApi().createImage({
+    const response = await getOpenAIApi(req.body.token).createImage({
       prompt,
       n: 1,
       size: '512x512',

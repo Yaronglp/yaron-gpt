@@ -7,6 +7,7 @@ import { scrollToElement } from '@/utils/elements'
 import ImageHolder, { IImageHolder } from '../components/ImageHolder'
 import BackButton from '@/components/BackButton'
 import { FormWrapperStyle, LoaderWrapperStyle } from '@/styles/common'
+import { getOpenAIKey } from '@/utils/storage'
 
 export default function ImageCreation() {
   const [imageHolders, setImageHolders] = useState<IImageHolder[]>([])
@@ -27,7 +28,7 @@ export default function ImageCreation() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({ prompt, token: getOpenAIKey() }),
       })
       const data = await response.json()
 

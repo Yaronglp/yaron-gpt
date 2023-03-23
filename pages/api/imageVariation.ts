@@ -16,7 +16,11 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   await saveImageLocally(prompt)
 
   try {
-    const response = await getOpenAIApi().createImageVariation(fs.createReadStream(LOCAL_IMAGE_PATH), 2, '512x512')
+    const response = await getOpenAIApi(req.body.token).createImageVariation(
+      fs.createReadStream(LOCAL_IMAGE_PATH),
+      2,
+      '512x512'
+    )
     const imageURLs = [response.data.data[0].url, response.data.data[1].url]
 
     res.status(200).json({

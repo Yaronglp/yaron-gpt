@@ -7,6 +7,7 @@ import Portal from '@/components/Portal'
 import { scrollToElement } from '@/utils/elements'
 import BackButton from '@/components/BackButton'
 import { FormWrapperStyle, LoaderWrapperStyle } from '@/styles/common'
+import { getOpenAIKey } from '@/utils/storage'
 
 const TOGGLE_INPUT = {
   optionLeft: 'Probability Temp',
@@ -34,7 +35,7 @@ export default function Completion() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ prompt, isCreativityTemp }),
+        body: JSON.stringify({ prompt, isCreativityTemp, token: getOpenAIKey() }),
       })
       const data = await response.json()
 

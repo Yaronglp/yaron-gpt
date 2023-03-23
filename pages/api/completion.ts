@@ -7,7 +7,7 @@ const GENERAL_ERROR = 'An error occurred, please try again later'
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const temperature = req.body.isCreativityTemp ? 0.7 : 0.3
   try {
-    const completion = await getOpenAIApi().createCompletion({
+    const completion = await getOpenAIApi(req.body.token).createCompletion({
       model: 'text-davinci-003',
       prompt: req.body.prompt,
       temperature,
