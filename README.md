@@ -5,21 +5,23 @@ This project was built to play a little bit with OpenAI capabilities.
 ## Getting Started
 1. Clone Project.
 2. Install packages by running `npm install`
-3. Create new file and name it `.env`
-4. Generate and copy [API key](https://beta.openai.com/account/api-keys)
-5. Paste the copied API key into `.env` file as follow: 
+3. Generate and copy [API key](https://beta.openai.com/account/api-keys) from OpenAI
+4. API key can be consumed by `.env` or by `LocalStorage`, for `LocalStorage` method, jump to section 9
+5. Create new file and name it `.env`
+6. Copy the API key from section 3 and paste it into `.env` file as follow:
 ``
 OPENAI_API_KEY="<PASTE_YOUR_API_KEY>"
 ``
-6. Run the project - `npm run dev`
-
-7. Open browser [http://localhost:3000](http://localhost:3000)
+7. Run the project - `npm run dev`
+8. Open browser [http://localhost:3000](http://localhost:3000)
+9. If you didn't use the `.env` method, click on `Insert OpenAI key` on the landing page, paste the API key from section 3, and click save
+10. Enjoy
 
 The project should be served on port 3000, in case that port is not available, Next.js will increment port number until available.
 
 &nbsp;
 ## Home page:
-![image](https://user-images.githubusercontent.com/10623307/217327332-9b8afe7b-1286-4d61-b40a-e2da6fbe8435.png)
+![image](https://user-images.githubusercontent.com/10623307/227323185-e3bde282-2090-4763-ac3e-8da638ecf955.png)
 
 &nbsp;
 ## Ask AI:
