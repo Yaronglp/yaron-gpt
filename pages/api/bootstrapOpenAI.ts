@@ -9,8 +9,6 @@ const createOpenAIInstance = () => {
   })
 
   openAIInstance = new OpenAIApi(configuration)
-
-  return openAIInstance
 }
 
 export const getOpenAIApi = (apiKey?: string) => {
@@ -20,4 +18,6 @@ export const getOpenAIApi = (apiKey?: string) => {
 
   apiKeyFromStorage = apiKey || ''
   createOpenAIInstance()
+
+  return openAIInstance
 }
