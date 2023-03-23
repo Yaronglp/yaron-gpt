@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Link from 'next/link'
+import TokenKeyInsertion from '@/components/TokenKeyInsertion'
 
 interface ILinks {
   urlPath: string
@@ -24,6 +25,7 @@ const LINKS: ILinks[] = [
 export default function Home() {
   return (
     <StyledWrapper>
+      <StyledTokenKeyInsertion />
       {LINKS.map((link) => (
         <section key={link.label}>
           <Link href={link.urlPath}>{link.label}</Link>
@@ -58,4 +60,9 @@ const StyledWrapper = styled.main`
       font-weight: 700;
     }
   }
+`
+
+const StyledTokenKeyInsertion = styled(TokenKeyInsertion)`
+  position: absolute;
+  top: var(--size-big);
 `
