@@ -1,14 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { Configuration, OpenAIApi } from 'openai'
 import axios from 'axios'
 import Jimp from 'jimp'
+import { getOpenAIApi } from './bootstrapOpenAI'
 const fs = require('fs')
 // TODO: switch the CJS to ESM (including stream implementation)
-
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-})
-const openai = new OpenAIApi(configuration)
 
 const GENERAL_ERROR = 'Something went wrong with the request for the image variation generator'
 const IMAGE_FILENAME = 'image.png'
@@ -21,7 +16,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   await saveImageLocally(prompt)
 
   try {
-    const response = await openai.createImageVariation(fs.createReadStream(LOCAL_IMAGE_PATH), 2, '512x512')
+    const response = await getOpenAIApi().createImageVariation(fs.createReadStream(LOCAL_IMAGE_PATH), 2, '512x512')
     const imageURLs = [response.data.data[0].url, response.data.data[1].url]
 
     res.status(200).json({
