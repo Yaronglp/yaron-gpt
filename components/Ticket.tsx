@@ -1,6 +1,7 @@
 import { addQuestionMark, capitalization } from '@/utils/manipulation'
 import React from 'react'
 import styled, { css } from 'styled-components'
+import CopyToClipboard from './copyToClipboard'
 
 export interface ITicket {
   question: string
@@ -14,7 +15,10 @@ const Ticket = ({ question = '', answer = '', isError = false }: ITicket) => {
   return (
     <StyledSection isError={isError}>
       <StyledParagraph>{normalizedQuestion}</StyledParagraph>
-      <StyledAnswer>{answer.trim()}</StyledAnswer>
+      <StyledAnswer>
+        {answer.trim()}
+        <StyledCopyToClipboard text={answer} />
+      </StyledAnswer>
     </StyledSection>
   )
 }
@@ -23,9 +27,11 @@ export default Ticket
 
 const StyledParagraph = styled.p`
   flex: 1;
+  padding: var(--size-regular) 0 var(--size-regular) var(--size-small);
 `
 
 const StyledSection = styled.section<{ isError: boolean }>`
+  position: relative;
   background: var(--color-white);
   display: flex;
   gap: 2rem;
@@ -57,4 +63,11 @@ const StyledSection = styled.section<{ isError: boolean }>`
 const StyledAnswer = styled(StyledParagraph)`
   white-space: pre-line;
   flex: 4;
+  padding: var(--size-regular) var(--size-small) var(--size-regular) 0;
+`
+
+const StyledCopyToClipboard = styled(CopyToClipboard)`
+  position: absolute;
+  top: 2px;
+  right: 2px;
 `
