@@ -1,14 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getOpenAIApi } from './bootstrapOpenAI'
 
-const MAX_TOKENS_QUERY = 1000
+const MAX_TOKENS_QUERY = 512
 const GENERAL_ERROR = 'An error occurred, please try again later'
+const MODEL = 'text-davinci-003'
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  const temperature = req.body.isCreativityTemp ? 0.7 : 0.3
+  const temperature = req.body.isCreativityTemp ? 0.8 : 0.2
   try {
     const completion = await getOpenAIApi(req.body.token).createCompletion({
-      model: 'text-davinci-003',
+      model: MODEL,
       prompt: req.body.prompt,
       temperature,
       max_tokens: MAX_TOKENS_QUERY,
