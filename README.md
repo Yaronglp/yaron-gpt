@@ -44,6 +44,6 @@ Running on http://localhost:3000/image-variation
 &nbsp;
 ## FAQ:
 
-#### <u>Question:</u> Why I'm getting the error message - `You exceeded your current quota, please check your plan and billing details.`
-<u>Answer:</u> [Link](https://help.openai.com/en/articles/6614457-why-am-i-getting-an-error-message-stating-that-i-ve-reached-my-usage-limit) for explanation.
+#### Question: Why I'm getting the error message - `You exceeded your current quota, please check your plan and billing details.`
+Answer: [Link](https://help.openai.com/en/articles/6614457-why-am-i-getting-an-error-message-stating-that-i-ve-reached-my-usage-limit) for explanation.
 
