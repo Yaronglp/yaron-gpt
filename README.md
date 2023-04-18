@@ -40,3 +40,10 @@ Running on http://localhost:3000/image-creation
 ![image](https://user-images.githubusercontent.com/10623307/217328388-fc4ad513-59a0-4cd1-b597-7616849160ac.png)
 
 Running on http://localhost:3000/image-variation
+
+&nbsp;
+## FAQ:
+
+#### <u>Question:</u> Why I'm getting the error message - `You exceeded your current quota, please check your plan and billing details.`
+<u>Answer:</u> [Link](https://help.openai.com/en/articles/6614457-why-am-i-getting-an-error-message-stating-that-i-ve-reached-my-usage-limit) for explanation.
+
