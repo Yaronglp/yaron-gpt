@@ -1,5 +1,5 @@
-# OpenAI different API capabilities (WIP)
-This project was built to play a little bit with OpenAI capabilities.
+# OpenAI different API capabilities
+This project was built to play a little bit with OpenAI API capabilities.
 
 &nbsp;
 ## Getting Started
